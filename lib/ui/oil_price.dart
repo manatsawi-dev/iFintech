@@ -16,17 +16,13 @@ class _OilPriceScreenState extends State<OilPriceScreen> {
     return _buildBody(context);
   }
 
-
-  Widget _buildBody(BuildContext context){
+  Widget _buildBody(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: _kMarginSize),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(24),
-          topRight: Radius.circular(24)
-        )
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24), topRight: Radius.circular(24))),
       //height: 1500,
       child: Column(
         children: <Widget>[
@@ -39,7 +35,7 @@ class _OilPriceScreenState extends State<OilPriceScreen> {
             currentPrice: 5000.00,
             beforePrice: 4950.00,
           ),
-         HotCard(
+          HotCard(
             logoPath: 'icons/eth_logo.png',
             title: 'ETH',
             cryptoName: 'Ethereum',
@@ -54,7 +50,7 @@ class _OilPriceScreenState extends State<OilPriceScreen> {
             currency: 'US',
             currentPrice: 4800.00,
             beforePrice: 4900.00,
-          ),     
+          ),
           HotCard(
             logoPath: 'icons/usdt_logo.png',
             title: 'USDT',
@@ -113,7 +109,6 @@ class _OilPriceScreenState extends State<OilPriceScreen> {
           ),
         ],
       ),
-
     );
   }
 }

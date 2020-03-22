@@ -4,8 +4,7 @@ class StockModel {
   double currentPrice;
   double beforePrice;
 
-  StockModel(
-      {this.title, this.currency, this.currentPrice, this.beforePrice});
+  StockModel({this.title, this.currency, this.currentPrice, this.beforePrice});
 
   StockModel.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -24,10 +23,9 @@ class StockModel {
   }
 }
 
-class StockApi{
-
+class StockApi {
   var stockData = <StockModel>[
-     StockModel(
+    StockModel(
       title: 'SET',
       currency: 'BTH',
       currentPrice: 1127.24,
@@ -39,7 +37,7 @@ class StockApi{
       currentPrice: 756.11,
       beforePrice: 691.99,
     ),
-     StockModel(
+    StockModel(
       title: 'SET100',
       currency: 'BTH',
       currentPrice: 1651.40,
@@ -51,7 +49,7 @@ class StockApi{
       currentPrice: 445.33,
       beforePrice: 419.55,
     ),
-      StockModel(
+    StockModel(
       title: 'SETCLMV',
       currency: 'BTH',
       currentPrice: 690.05,
@@ -82,9 +80,8 @@ class StockApi{
       beforePrice: 217.75,
     ),
   ];
-  
-  Future<List<StockModel>> getStockPrice() async{
+
+  Future<List<StockModel>> getStockPrice() async {
     return stockData;
   }
 }
-

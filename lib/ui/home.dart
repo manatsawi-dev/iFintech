@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:ifintech/ui/ctypto.dart';
 import 'package:ifintech/ui/stock.dart';
@@ -9,18 +8,18 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin{
-
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   int _selectedMenu;
   double _paddingAnimation = 100;
   var controller = ScrollController();
-
 
   @override
   void initState() {
     super.initState();
     _selectedMenu = 0;
   }
+
   @override
   void dispose() {
     super.dispose();
@@ -29,21 +28,15 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-
-   // const SizedBox _kMarginTop = SizedBox(height: 8);
+    // const SizedBox _kMarginTop = SizedBox(height: 8);
 
     return Scaffold(
       body: Container(
-         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xffbdc3c7),
-              Color(0xff2c3e50)
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight
-          )
-        ),
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Color(0xffbdc3c7), Color(0xff2c3e50)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight)),
         child: Column(
           children: <Widget>[
             BannerWidget(),
@@ -55,38 +48,29 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     );
   }
 
-
-  Widget _buildBody(BuildContext context){
-
+  Widget _buildBody(BuildContext context) {
     return SingleChildScrollView(
-      controller: controller,
-      child: _getScreen(context)
-    );
+        controller: controller, child: _getScreen(context));
   }
 
-  Widget _getScreen(BuildContext context){
-    if(_selectedMenu == 0){
+  Widget _getScreen(BuildContext context) {
+    if (_selectedMenu == 0) {
       return _getAnimation(context, CtyptoScrren());
-    }
-    else if(_selectedMenu == 1)
+    } else if (_selectedMenu == 1)
       return _getAnimation(context, StockScreen());
-   /* else if(_selectedMenu == 2)
+    /* else if(_selectedMenu == 2)
       return _getAnimation(context, OilPriceScreen());*/
     else
       return Container();
   }
 
-  Widget _getAnimation(BuildContext context, Widget widget){
+  Widget _getAnimation(BuildContext context, Widget widget) {
     return Column(
-      children: <Widget>[
-        _animatedContainer(context),
-        widget
-      ],
+      children: <Widget>[_animatedContainer(context), widget],
     );
-
   }
 
-  Widget _animatedContainer(BuildContext context){
+  Widget _animatedContainer(BuildContext context) {
     setState(() {
       _paddingAnimation = 0;
     });
@@ -96,11 +80,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     );
   }
 
-
-
-
-  Widget _buildMenu(BuildContext context){
-
+  Widget _buildMenu(BuildContext context) {
     const double _kMarginSize = 16;
     const SizedBox _kSizeBox = SizedBox(width: 8);
 
@@ -111,8 +91,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           ControlMenu(
-            visible: _selectedMenu == 0 ? true: false,
-            onPressed: (){
+            visible: _selectedMenu == 0 ? true : false,
+            onPressed: () {
               _onPressedMenu(ButtonMenu.Ctypto);
             },
             buttonColor: Colors.orange,
@@ -120,14 +100,14 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           ),
           _kSizeBox,
           ControlMenu(
-            visible: _selectedMenu == 1 ? true: false,
-            onPressed: (){
+            visible: _selectedMenu == 1 ? true : false,
+            onPressed: () {
               _onPressedMenu(ButtonMenu.Stock);
             },
             buttonColor: Colors.orange,
             title: Text('STOCK PRICE'),
           ),
-         /* _kSizeBox,
+          /* _kSizeBox,
            ControlMenu(
             visible: _selectedMenu == 2 ? true: false,
             onPressed: (){
@@ -136,25 +116,16 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             buttonColor: Colors.orange,
             title: Text('OIL PRICE'),
           ),*/
-        
-        
         ],
       ),
     );
-
   }
 
-  void _onPressedMenu(ButtonMenu btn){
+  void _onPressedMenu(ButtonMenu btn) {
     controller.jumpTo(0);
-    setState(()=> _paddingAnimation = 100);
-    setState(()=> _selectedMenu = btn.index);
-    
+    setState(() => _paddingAnimation = 100);
+    setState(() => _selectedMenu = btn.index);
   }
-
 }
 
-enum ButtonMenu{
-  Ctypto,
-  Stock,
-  Oil
-}
+enum ButtonMenu { Ctypto, Stock, Oil }

@@ -35,10 +35,9 @@ class CryptoModel {
   }
 }
 
-class CryptoApi{
-
+class CryptoApi {
   var cryptoData = <CryptoModel>[
-     CryptoModel(
+    CryptoModel(
       logoPath: 'icons/btc_logo.png',
       title: 'BTC',
       cryptoName: 'Bitcoin',
@@ -61,7 +60,7 @@ class CryptoApi{
       currency: 'US',
       currentPrice: 4800.00,
       beforePrice: 4900.00,
-    ),     
+    ),
     CryptoModel(
       logoPath: 'icons/usdt_logo.png',
       title: 'USDT',
@@ -119,8 +118,8 @@ class CryptoApi{
       beforePrice: 1000.0,
     ),
   ];
-  
-  Future<List<CryptoModel>> getCryptoPrice() async{
+
+  Future<List<CryptoModel>> getCryptoPrice() async {
     return cryptoData;
   }
 }
